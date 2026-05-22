@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iron Man AI — 12 Projects That Get You Hired</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080A0F;
+    --bg-2: #0D1018;
+    --bg-3: #111420;
+    --bg-card: #0F1219;
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(255,255,255,0.14);
+    --text-primary: #F0EDE8;
+    --text-secondary: #8A8D9A;
+    --text-tertiary: #50535E;
+    --accent: #C8FF57;
+    --accent-dim: rgba(200,255,87,0.12);
+    --accent-dim2: rgba(200,255,87,0.06);
+    --purple: #9B7FFF;
+    --purple-dim: rgba(155,127,255,0.12);
+    --coral: #FF6B4A;
+    --coral-dim: rgba(255,107,74,0.12);
+    --teal: #4AFFD4;
+    --teal-dim: rgba(74,255,212,0.1);
+    --amber: #FFB547;
+    --amber-dim: rgba(255,181,71,0.1);
+    --blue: #4A9EFF;
+    --blue-dim: rgba(74,158,255,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* GRID BACKGROUND */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8,10,15,0.85);
+    backdrop-filter: blur(20px);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+
+  .nav-cta {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 6px;
+    background: var(--accent);
+    color: #080A0F;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(200,255,87,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(200,255,87,0.25);
+    border-radius: 99px;
+    padding: 5px 14px;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.6s ease both;
+  }
+
+  .hero-badge span {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.6s 0.1s ease both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    font-family: 'Instrument Serif', serif;
+    color: var(--accent);
+    font-weight: 400;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    animation: fadeInUp 0.6s 0.2s ease both;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    animation: fadeInUp 0.6s 0.3s ease both;
+  }
+
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    display: block;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-tertiary);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: fadeInUp 0.6s 0.5s ease both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--text-tertiary), transparent);
+    animation: scrollDown 1.5s ease-in-out infinite;
+  }
+
+  @keyframes scrollDown {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50% { transform: scaleY(0.5); opacity: 0.3; }
+  }
+
+  /* FILTER BAR */
+  .filter-section {
+    position: relative;
+    z-index: 1;
+    padding: 0 2rem;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+  }
+
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .filter-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-right: 4px;
+  }
+
+  .filter-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+  }
+
+  .filter-btn.active {
+    background: var(--accent-dim);
+    border-color: rgba(200,255,87,0.3);
+    color: var(--accent);
+  }
+
+  /* PROJECTS GRID */
+  .projects-section {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--bg-card);
+    padding: 1.75rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--card-accent, var(--accent)), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .card:hover { background: var(--bg-3); }
+  .card:hover::before { opacity: 1; }
+  .card.expanded { background: var(--bg-2); }
+  .card.expanded::before { opacity: 1; }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.05em;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .card-toggle {
+    width: 24px; height: 24px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    color: var(--text-tertiary);
+    font-size: 14px;
+  }
+  .card:hover .card-toggle, .card.expanded .card-toggle {
+    border-color: var(--border-hover);
+    color: var(--text-secondary);
+  }
+  .card.expanded .card-toggle { transform: rotate(45deg); }
+
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-primary);
+    line-height: 1.3;
+    flex: 1;
+  }
+
+  .card-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .tag-money { background: rgba(74,255,212,0.1); color: var(--teal); border: 1px solid rgba(74,255,212,0.2); }
+  .tag-research { background: rgba(155,127,255,0.1); color: var(--purple); border: 1px solid rgba(155,127,255,0.2); }
+  .tag-hot { background: rgba(255,107,74,0.1); color: var(--coral); border: 1px solid rgba(255,107,74,0.2); }
+  .tag-agent { background: rgba(200,255,87,0.08); color: var(--accent); border: 1px solid rgba(200,255,87,0.2); }
+  .tag-vision { background: rgba(255,181,71,0.1); color: var(--amber); border: 1px solid rgba(255,181,71,0.2); }
+
+  .card-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .card-revenue {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 1rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  /* EXPANDED BODY */
+  .card-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card.expanded .card-body { max-height: 2000px; }
+
+  .card-body-inner {
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-text {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .pill {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    background: var(--bg);
+    font-family: 'DM Mono', monospace;
+    transition: all 0.15s;
+  }
+
+  .pill:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+  }
+
+  .signals-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .signal {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .signal-icon { font-size: 16px; margin-bottom: 4px; }
+  .signal-text { font-size: 10px; color: var(--text-tertiary); line-height: 1.4; }
+
+  .paper-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .paper-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--purple);
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+
+  .paper-text {
+    font-size: 11px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .prompt-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    position: relative;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: var(--bg-2);
+    color: var(--text-tertiary);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-transform: uppercase;
+  }
+  .copy-btn:hover { color: var(--accent); border-color: rgba(200,255,87,0.3); }
+  .copy-btn.copied { color: var(--accent); border-color: rgba(200,255,87,0.4); }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .footer-logo em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .footer-sub {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--text-secondary); }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; }
+    .signals-row { grid-template-columns: 1fr; }
+    nav { padding: 1rem; }
+    .nav-links { display: none; }
+    .hero-title { font-size: 2.8rem; }
+    .filter-section, .projects-section { padding: 0 1rem 3rem; }
+    nav { gap: 1rem; }
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 3px; }
+
+  /* HIDDEN */
+  .card.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">⚡ Iron Man AI</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a class="nav-cta" href="#projects">View All 12</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+
+  <div class="hero-badge">
+    <span></span>
+    Enigmax Labs · Iron Man AI Portfolio
+  </div>
+
+  <h1 class="hero-title">
+    12 Projects<br>That Get You <em>Hired</em>
+  </h1>
+
+  <p class="hero-subtitle">
+    Each project is monetizable, research-backed, and signals exactly what top AI labs want to see.
+    Build these. Get hired. Build your company.
+  </p>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">12</span>
+      <span class="stat-label">Projects</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">24</span>
+      <span class="stat-label">Papers</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">$200K+</span>
+      <span class="stat-label">Target Salary</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">∞</span>
+      <span class="stat-label">Potential</span>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-section" id="projects">
+  <div class="filter-bar">
+    <span class="filter-label">Filter</span>
+    <button class="filter-btn active" onclick="filter('all', this)">All 12</button>
+    <button class="filter-btn" onclick="filter('money', this)">💰 Monetizable</button>
+    <button class="filter-btn" onclick="filter('research', this)">🔬 Research</button>
+    <button class="filter-btn" onclick="filter('agent', this)">🤖 Agents</button>
+    <button class="filter-btn" onclick="filter('hot', this)">🔥 Hot Skill</button>
+    <button class="filter-btn" onclick="filter('vision', this)">👁 Vision AI</button>
+  </div>
+</div>
+
+<!-- PROJECTS GRID -->
+<main class="projects-section">
+  <div class="projects-grid" id="grid"></div>
+</main>
+
+<!-- FOOTER -->
+<footer id="about">
+  <div class="footer-logo">Iron Man <em>AI</em></div>
+  <p class="footer-sub">Built by Faheem · Enigmax Labs · The AI Stack</p>
+  <ul class="footer-links">
+    <li><a href="#">GitHub</a></li>
+    <li><a href="#">YouTube</a></li>
+    <li><a href="#">LinkedIn</a></li>
+    <li><a href="#">Enigmax</a></li>
+  </ul>
+</footer>
+
+<script>
+const TAG_COLORS = {
+  money: ['money', '💰 Monetizable'],
+  research: ['research', '🔬 Research-backed'],
+  hot: ['hot', '🔥 Hot Skill'],
+  agent: ['agent', '🤖 Agents'],
+  vision: ['vision', '👁 Vision AI'],
+};
+
+const ACCENT_COLORS = [
+  'var(--accent)', 'var(--purple)', 'var(--coral)', 'var(--teal)',
+  'var(--amber)', 'var(--blue)', 'var(--accent)', 'var(--purple)',
+  'var(--coral)', 'var(--teal)', 'var(--amber)', 'var(--accent)'
+];
+
+const projects = [
+  {
+    num: '01', title: 'MiniRAG — Personal Knowledge Engine',
+    tags: ['money','research','hot'],
+    desc: 'A RAG system that lets users chat with their own documents — notes, PDFs, books — with citations. Charge $9/mo.',
+    why: 'RAG is the #1 skill every AI product company needs. Building it from scratch, without LangChain magic, shows you understand embeddings, vector search, chunking strategies, and retrieval evaluation — things most bootcamp grads cannot explain.',
+    learn: 'Vector embeddings, FAISS/ChromaDB, semantic chunking, reranking (BM25 + dense), eval with RAGAS, FastAPI backend, Next.js frontend.',
+    papers: [
+      'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (Lewis et al., 2020) — reimplement the open-domain QA pipeline.',
+      'BEIR benchmark — run your system against it to show retrieval quality metrics.'
+    ],
+    stack: ['Python','FastAPI','OpenAI Embed','FAISS','ChromaDB','LlamaIndex','RAGAS','Next.js','Supabase','Stripe'],
+    signals: ['Understands retrieval', 'Can run evals', 'Full-stack AI'],
+    revenue: '$9/mo SaaS',
+    prompt: 'Build a production RAG system from scratch. Users upload PDFs/docs, backend chunks them, embeds with OpenAI text-embedding-3-small, stores in ChromaDB. Chat interface with streaming answers and source citations. Implement hybrid search: dense (cosine) + BM25. Add RAGAS eval dashboard showing faithfulness, answer relevance, context precision scores. Stripe paywall after 20 queries free. Stack: FastAPI + Next.js + ChromaDB + Supabase auth.'
+  },
+  {
+    num: '02', title: 'TinyFT — LLM Fine-Tuning SaaS',
+    tags: ['hot','money','research'],
+    desc: 'No-code UI to fine-tune small open-source models (Mistral, Llama) on custom data. Upload CSV, pick base model, train, deploy endpoint. Charge per training run.',
+    why: 'LLM fine-tuning engineers earn $195K–$350K. Building a fine-tuning product means you understand LoRA, QLoRA, PEFT, data formatting, and model serving — the exact stack Hugging Face, Together AI, and Fireworks AI are built on.',
+    learn: 'LoRA/QLoRA with PEFT library, Hugging Face Trainer, instruction tuning data formats (Alpaca, ShareGPT), vLLM for serving, GPU memory management.',
+    papers: [
+      'LoRA: Low-Rank Adaptation of Large Language Models (Hu et al., 2021) — implement LoRA from scratch, verify results match PEFT library.',
+      'QLoRA (Dettmers et al., 2023) — show 4-bit quantized fine-tuning on consumer GPU.'
+    ],
+    stack: ['Python','Hugging Face PEFT','vLLM','Modal.com','Axolotl','W&B','FastAPI','React','Stripe'],
+    signals: ['Fine-tuning specialist', 'GPU compute expertise', 'Builds ML platforms'],
+    revenue: '$5–50 per training run',
+    prompt: 'Build a no-code LLM fine-tuning platform. Frontend: drag-and-drop CSV upload, model picker (Mistral-7B, Llama-3-8B), hyperparameter sliders (epochs, lr, LoRA rank). Backend: FastAPI queues jobs to Modal.com for QLoRA training with PEFT. Use W&B for loss curves. After training, serve model via vLLM on a persistent endpoint. Show eval: MMLU subset score before vs after. Stripe billing per compute-minute.'
+  },
+  {
+    num: '03', title: 'EvalKit — LLM Evaluation Dashboard',
+    tags: ['research','hot','money'],
+    desc: 'Open-source + hosted tool to evaluate LLM outputs: hallucination detection, consistency checks, rubric scoring. B2B teams pay for this.',
+    why: 'Evals are the most underrated and highest-leverage skill in AI engineering. Every company shipping LLM products needs eval infrastructure. Building this signals you think like a research engineer, not just a prompt engineer.',
+    learn: 'LLM-as-judge patterns, G-Eval, PromptFoo internals, statistical significance for eval results, benchmark construction, hallucination detection methods.',
+    papers: [
+      'G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment (Liu et al., 2023) — reimplement G-Eval scoring pipeline.',
+      'RAGAS paper — reimplement faithfulness and context recall metrics from scratch, compare to library output.'
+    ],
+    stack: ['Python','PromptFoo','OpenAI API','LangSmith','PostgreSQL','FastAPI','React','Recharts','Docker','Stripe'],
+    signals: ['Research engineer mindset', 'Eval methodology', 'Essential for LLM teams'],
+    revenue: '$29/mo per team',
+    prompt: 'Build an LLM evaluation dashboard. Users paste prompts + expected outputs or connect via API. Run automated evals: G-Eval (coherence, consistency, fluency, relevance), hallucination score using NLI model (DeBERTa), BLEU/ROUGE baselines. Show score trends over time. LLM-as-judge panel: run same prompt through GPT-4o, Claude, Gemini, compare scores. Team features: shared prompt library, regression alerts when score drops >10%.'
+  },
+  {
+    num: '04', title: 'AgentOS — Autonomous Research Agent',
+    tags: ['agent','research','money'],
+    desc: 'An agent that does deep research: web search → read papers → synthesize → write report. Users pay per research task.',
+    why: 'Agentic AI is the fastest-growing category in 2025–2026. Building a real multi-step agent with tool use, memory, reflection, and error recovery shows you understand the full agent stack — not just prompting.',
+    learn: 'ReAct agent pattern, tool use, planning loops, long-term memory with vector store, agent observability/tracing, async Python, prompt chaining.',
+    papers: [
+      'ReAct: Synergizing Reasoning and Acting in Language Models (Yao et al., 2022) — reimplement ReAct loop from scratch without LangChain.',
+      'Reflexion: Language Agents with Verbal Reinforcement Learning — implement self-reflection loop where agent critiques its own output.'
+    ],
+    stack: ['Python','Claude API','Tavily Search','Firecrawl','LangGraph','ChromaDB','FastAPI','React','Stripe'],
+    signals: ['Builds production agents', 'Agent reliability', 'Tool use patterns'],
+    revenue: '$2–10 per research report',
+    prompt: 'Build a research agent using ReAct pattern. State machine with LangGraph: Plan → Search (Tavily) → Read (Firecrawl) → Synthesize → Reflect → Finalize. Agent has persistent memory (ChromaDB). Implement Reflexion: after draft, agent scores its own output on completeness (1-10), loops if score < 7. Frontend: shows agent thought trace in real-time via SSE. Stripe: $3 per report.'
+  },
+  {
+    num: '05', title: 'VisionAPI — Multimodal Document Parser',
+    tags: ['hot','money','vision'],
+    desc: 'API that extracts structured data from any document — invoices, lab reports, contracts — using vision LLMs. Charge per page parsed.',
+    why: 'Multimodal AI is one of the hottest emerging skill areas. Document AI is a $4B+ market. This project shows you can work with vision models, structured extraction, and build reliable APIs — critical for fintech, legal, and healthcare.',
+    learn: 'Vision LLM APIs (GPT-4o vision, Claude vision), structured output with JSON schema, PDF rendering (PyMuPDF), confidence scoring, async processing queues, OCR fallback.',
+    papers: [
+      'Nougat: Neural Optical Understanding for Academic Documents (Meta AI, 2023) — reimplement the academic PDF parser, compare to vision LLM approach.',
+      'LayoutLM: Pre-training of Text and Layout for Document Image Understanding — understand document structure modeling.'
+    ],
+    stack: ['Python','FastAPI','Claude Vision','PyMuPDF','Celery','Redis','PostgreSQL','S3','React','Stripe'],
+    signals: ['Multimodal AI skills', 'Reliable data pipelines', 'Document AI expertise'],
+    revenue: '$0.01–0.05 per page',
+    prompt: 'Build a document parsing API. Accepts PDF/image uploads. Pipeline: PDF → page images (PyMuPDF) → send each page to Claude Vision with JSON schema prompt → structured JSON output → confidence score per field. Handle tables, handwriting, multi-column layouts. Async queue with Celery/Redis. Fallback: if confidence < 0.8 on a field, flag for human review. Benchmark accuracy on FUNSD dataset and show F1 score in README.'
+  },
+  {
+    num: '06', title: 'PromptShield — LLM Security Layer',
+    tags: ['research','money','hot'],
+    desc: 'API middleware that detects and blocks prompt injection, jailbreaks, and PII leakage in LLM apps. Enterprise teams pay monthly.',
+    why: 'AI security is mandatory for any enterprise LLM deployment. This is an emerging field with very few engineers who deeply understand it. Building this puts you in a rare category and signals you think beyond just building — you think about production safety.',
+    learn: 'Prompt injection taxonomy, adversarial prompting, NLP classification (fine-tuning DeBERTa as guard), PII detection with regex + NER, middleware patterns, rate limiting.',
+    papers: [
+      'Prompt Injection Attacks against LLM-integrated Applications (Greshake et al., 2023) — reimplement 3 attack types and show your classifier catching them.',
+      'Jailbroken: How does LLM Safety Training Fail? — analyze failure modes and show your guardrail catches key patterns.'
+    ],
+    stack: ['Python','FastAPI','DeBERTa','spaCy','Presidio','Redis','Docker','React','Stripe'],
+    signals: ['Rare AI security skill', 'Production mindset', 'Enterprise-ready thinking'],
+    revenue: '$49–299/mo per team',
+    prompt: 'Build an LLM security middleware API. Input: user message + system prompt. Checks: (1) Prompt injection detection — fine-tuned DeBERTa classifier on jailbreak dataset. (2) PII leakage scan — Microsoft Presidio for 20+ entity types. (3) Topic boundary check — semantic similarity to allowed topic list. Dashboard: real-time threat feed, top blocked patterns. Fine-tune DeBERTa on JailbreakBench dataset and report F1 vs baseline.'
+  },
+  {
+    num: '07', title: 'SpeechCore — Real-Time Voice AI Platform',
+    tags: ['hot','money','agent'],
+    desc: 'Real-time voice AI: STT → LLM → TTS pipeline with <500ms latency. Build as SDK + hosted API. Charge per minute of audio.',
+    why: 'Voice AI is exploding — Eleven Labs, Hume AI, Retell AI are all hiring engineers who understand the full voice pipeline. Sub-500ms latency is a hard engineering problem that demonstrates real systems thinking.',
+    learn: 'WebSockets for streaming audio, Whisper (STT), streaming LLM responses, TTS streaming (ElevenLabs/Cartesia), latency optimization, WebRTC basics, async Python.',
+    papers: [
+      'Whisper: Robust Speech Recognition via Large-Scale Weak Supervision (OpenAI, 2022) — run Whisper locally, benchmark WER on LibriSpeech.',
+      'FastSpeech 2: Fast and High-Quality End-to-End Text to Speech — understand TTS architecture as contrast to neural codec models.'
+    ],
+    stack: ['Python','FastAPI','WebSockets','Whisper','Deepgram','ElevenLabs','Cartesia','Redis','React','Stripe'],
+    signals: ['Real-time AI systems', 'Streaming architecture', 'Voice AI expertise'],
+    revenue: '$0.05–0.15 per minute',
+    prompt: 'Build a real-time voice AI platform targeting <500ms latency. Architecture: browser captures audio chunks via WebSocket → FastAPI server → Deepgram streaming STT → Claude streaming response → Cartesia TTS streaming → audio back to browser. Implement voice activity detection. Session state in Redis. Measure and display latency breakdown (STT/LLM/TTS) in dashboard. Build demo: AI interview coach. Python SDK: 10 lines to integrate voice AI into any app.'
+  },
+  {
+    num: '08', title: 'GraphMind — Knowledge Graph Builder',
+    tags: ['research','money','agent'],
+    desc: 'Extracts entities and relationships from text/documents and builds an interactive knowledge graph. Researchers and analysts pay for this.',
+    why: 'Graph RAG is one of the most advanced retrieval patterns emerging in 2025. Microsoft\'s GraphRAG paper showed knowledge graphs outperform standard RAG on complex queries. Building this positions you at the frontier of retrieval research.',
+    learn: 'Named entity recognition (NER), relation extraction, knowledge graph databases (Neo4j), GraphRAG pattern, graph visualization (D3.js/Cytoscape), information extraction pipelines.',
+    papers: [
+      'From Local to Global: A Graph RAG Approach to Query-Focused Summarization (Edge et al., Microsoft, 2024) — reimplement the GraphRAG pipeline, compare to standard RAG on complex multi-hop questions.',
+      'REBEL: Relation Extraction By End-to-End Language Generation — use REBEL for automated relation extraction.'
+    ],
+    stack: ['Python','spaCy','REBEL','Neo4j','LangChain','FastAPI','D3.js','Cytoscape.js','React','Stripe'],
+    signals: ['Advanced RAG knowledge', 'Research frontier', 'Graph data structures'],
+    revenue: '$19/mo for researchers',
+    prompt: 'Build a knowledge graph builder. Upload text/PDF → extract entities (spaCy NER) + relationships (REBEL model) → store in Neo4j → visualize with Cytoscape.js. Implement GraphRAG: queries traverse graph communities before answering, compare answer quality to standard vector RAG on same corpus. Reimplement Microsoft GraphRAG community detection (Leiden algorithm). Benchmark on HotpotQA multi-hop dataset.'
+  },
+  {
+    num: '09', title: 'MLFlow-Lite — Personal MLOps Dashboard',
+    tags: ['hot','money','research'],
+    desc: 'Lightweight experiment tracking + model registry for indie ML engineers and small teams. Simpler than MLFlow, cheaper than W&B.',
+    why: 'MLOps is the infrastructure layer every ML team needs. Most small teams can\'t afford Weights & Biases Enterprise. Building this shows you understand the full ML lifecycle — not just model training but versioning, reproducibility, and deployment.',
+    learn: 'Experiment tracking design, artifact storage (S3), model versioning, metric visualization, Python SDK design, FastAPI, Docker, database design for time-series metrics.',
+    papers: [
+      'Hidden Technical Debt in Machine Learning Systems (Sculley et al., Google, 2015) — build your dashboard to address the specific debt categories they identify.',
+      'Towards ML Engineering: A Brief History Of TensorFlow Extended (TFX) — understand pipeline design patterns.'
+    ],
+    stack: ['Python SDK','FastAPI','PostgreSQL','TimescaleDB','MinIO','React','Recharts','Docker','Stripe'],
+    signals: ['Full ML lifecycle', 'Infrastructure mindset', 'Developer tooling'],
+    revenue: '$12/mo indie, $49/mo team',
+    prompt: 'Build a lightweight MLOps dashboard. Python SDK: log_metric(), log_param(), log_artifact(), log_model(). Backend: FastAPI + PostgreSQL. MinIO for artifact storage. Frontend: experiment comparison table, metric charts with smoothing, model registry with version history. Features: run comparison side-by-side, hyperparameter importance chart, model lineage DAG. Docker Compose for self-hosting. Reference Hidden Technical Debt paper in README.'
+  },
+  {
+    num: '10', title: 'BioLLM — Medical Literature Summarizer',
+    tags: ['research','money','agent'],
+    desc: 'Summarizes PubMed research papers with clinical accuracy, drug interactions, and evidence quality ratings. Charge clinicians and researchers $29/mo.',
+    why: 'Healthcare AI is the highest-paying vertical for AI engineers. This project shows domain-specific RAG, hallucination mitigation (critical in medical context), and grounded generation — signals that land interviews at Google Health, Microsoft Health, and medical AI startups.',
+    learn: 'Domain-specific RAG, PubMed API, biomedical NLP (BioBERT, PubMedBERT), evidence-based grounding, citation verification, hallucination detection in high-stakes contexts.',
+    papers: [
+      'BioMedLM: A 2.7B Parameter Language Model Trained On Biomedical Text (Stanford CRFM, 2022) — fine-tune on medical QA, compare to GPT-4o on MedQA benchmark.',
+      'MedRAG: A Comprehensive Benchmark for Retrieval Augmented Generation in Biomedical NLP — reimplement their RAG pipeline and report scores.'
+    ],
+    stack: ['Python','PubMed API','PubMedBERT','BioBERT','ChromaDB','Claude API','FastAPI','React','Stripe'],
+    signals: ['Domain AI expertise', 'High-stakes AI safety', 'Healthcare vertical knowledge'],
+    revenue: '$29/mo for clinicians',
+    prompt: 'Build a medical literature summarizer. PubMed API integration: search by topic, fetch abstracts + full text. Embedding: use PubMedBERT for domain-specific retrieval. RAG pipeline: retrieve top-10 papers → generate structured summary: clinical question, study design, population, key findings, limitations, evidence level (GRADE scale). Every claim must cite a specific paper — uncited claims get flagged. Fine-tune BioMedLM-2.7B on MedQA dataset and compare accuracy to GPT-4o baseline.'
+  },
+  {
+    num: '11', title: 'CodeReview AI — Autonomous PR Reviewer',
+    tags: ['agent','money','hot'],
+    desc: 'GitHub bot that reviews PRs: finds bugs, suggests improvements, checks security issues, explains code in plain English. $15/mo per repo.',
+    why: 'Code AI is the most validated monetization surface in AI — GitHub Copilot, Cursor, and Codeium prove massive willingness to pay. Building a code agent from scratch signals you understand ASTs, code representation, and agentic tool use for a concrete vertical.',
+    learn: 'GitHub API + webhooks, code analysis (AST parsing, tree-sitter), code embedding models (CodeBERT), security vulnerability detection, agentic tool use, GitHub Actions.',
+    papers: [
+      'CodeBERT: A Pre-Trained Model for Programming and Natural Languages (Feng et al., Microsoft, 2020) — use CodeBERT embeddings for semantic code similarity.',
+      'SAST meets LLMs: Fixing Static Analysis Warnings with AI — implement combining static analysis output with LLM explanation.'
+    ],
+    stack: ['Python','GitHub API','Webhooks','CodeBERT','Claude API','tree-sitter','Bandit','FastAPI','PostgreSQL','Stripe'],
+    signals: ['Code AI expertise', 'Platform integration', 'Developer tooling'],
+    revenue: '$15/mo per repo',
+    prompt: 'Build a GitHub PR review bot. GitHub webhook triggers on PR open/update. Pipeline: fetch diff → parse AST with tree-sitter → identify changed functions → for each change: (1) static analysis with Bandit for security, (2) CodeBERT semantic similarity for duplicate code, (3) Claude review with full context. Post review as GitHub comment with severity badges. Track false positive rate. GitHub App setup (OAuth). Show F1 on CodeReviewer benchmark dataset.'
+  },
+  {
+    num: '12', title: 'NexAgent — Multi-Agent Orchestration Framework',
+    tags: ['agent','research','hot'],
+    desc: 'Open-source framework for orchestrating multiple specialized AI agents with shared memory, task routing, and human-in-the-loop. Hosted version for teams.',
+    why: 'This is the capstone. Multi-agent systems are the frontier of AI engineering in 2026. Building an orchestration framework shows you can architect systems, not just use APIs. This literally becomes the infrastructure layer of your company — you\'re building Enigmax/NexAgent while building your portfolio.',
+    learn: 'Multi-agent patterns (supervisor, swarm, sequential), inter-agent communication, shared memory architectures, task decomposition, human-in-the-loop design, observability for agents.',
+    papers: [
+      'AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation (Microsoft, 2023) — reimplement a 3-agent pipeline, benchmark against AutoGen on HumanEval.',
+      'AgentBench: Evaluating LLMs as Agents (Liu et al., 2023) — run your framework agents on AgentBench tasks and report scores publicly.'
+    ],
+    stack: ['Python','LangGraph','Claude API','Redis','ChromaDB','FastAPI','React','Docker','GitHub','Stripe'],
+    signals: ['System architect mindset', 'Research-level AI engineering', 'Builds AI infrastructure'],
+    revenue: '$49/mo hosted, open-source core',
+    prompt: 'Build a multi-agent orchestration framework. Core: LangGraph state machine with 4 agent roles — Planner (breaks task into subtasks), Researcher (web + doc search), Executor (code/action agent), Critic (reviews output, loops if quality < threshold). Shared memory: ChromaDB. Inter-agent messaging: Redis pub/sub. Human-in-the-loop: pause any agent step for human approval. Observability: full agent trace with token counts, latency, tool calls per step. Reimplement AutoGen\'s 2-agent coding benchmark. Open-source core on GitHub, charge for hosted version.'
+  }
+];
+
+function buildCards() {
+  const grid = document.getElementById('grid');
+  projects.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'card fade-in';
+    card.dataset.tags = JSON.stringify(p.tags);
+    card.style.setProperty('--card-accent', ACCENT_COLORS[i]);
+
+    const tagsHtml = p.tags.map(t => {
+      const [cls, label] = TAG_COLORS[t] || [t, t];
+      return `<span class="tag tag-${cls}">${label}</span>`;
+    }).join('');
+
+    const pillsHtml = p.stack.map(s => `<span class="pill">${s}</span>`).join('');
+    const papersHtml = p.papers.map(pp =>
+      `<div class="paper-item"><div class="paper-dot"></div><div class="paper-text">${pp}</div></div>`
+    ).join('');
+    const signalsHtml = p.signals.map(s =>
+      `<div class="signal"><div class="signal-text">${s}</div></div>`
+    ).join('');
+
+    card.innerHTML = `
+      <div class="card-header" onclick="toggleCard(${i})">
+        <span class="card-num">${p.num}</span>
+        <div style="flex:1">
+          <div class="card-title">${p.title}</div>
+        </div>
+        <div class="card-toggle">+</div>
+      </div>
+      <div class="card-tags">${tagsHtml}</div>
+      <div class="card-desc">${p.desc}</div>
+      <div class="card-revenue">↗ ${p.revenue}</div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <div>
+            <div class="section-label">Why build this</div>
+            <div class="section-text">${p.why}</div>
+          </div>
+          <div>
+            <div class="section-label">What you'll learn</div>
+            <div class="section-text">${p.learn}</div>
+          </div>
+          <div>
+            <div class="section-label">Research papers to reimplement</div>
+            <div style="display:grid;gap:10px">${papersHtml}</div>
+          </div>
+          <div>
+            <div class="section-label">Market signals</div>
+            <div class="signals-row">${signalsHtml}</div>
+          </div>
+          <div>
+            <div class="section-label">Tech stack</div>
+            <div class="pills">${pillsHtml}</div>
+          </div>
+          <div>
+            <div class="section-label">Claude Code prompt</div>
+            <div class="prompt-box" id="prompt-${i}">
+              <button class="copy-btn" onclick="copyPrompt(${i}, event)">Copy</button>
+              ${p.prompt}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function toggleCard(i) {
+  const cards = document.querySelectorAll('.card');
+  cards[i].classList.toggle('expanded');
+}
+
+function copyPrompt(i, e) {
+  e.stopPropagation();
+  const text = projects[i].prompt;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = e.target;
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function filter(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.card').forEach(card => {
+    if (type === 'all') { card.classList.remove('hidden'); return; }
+    const tags = JSON.parse(card.dataset.tags);
+    card.classList.toggle('hidden', !tags.includes(type));
+  });
+}
+
+// Intersection Observer for fade-in animations
+function setupObserver() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, j) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), j * 60);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05 });
+
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+}
+
+buildCards();
+setupObserver();
+</script>
+</body>
+</html>
