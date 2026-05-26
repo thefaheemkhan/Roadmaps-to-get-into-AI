@@ -3,7 +3,7 @@
 
 <br/>
 
-> **From Zero to Production-Grade AI Engineer.** [Click Here ](https://ai-engineering-mastery-101.netlify.app/)
+> **From Zero to Production-Grade AI Engineer.** [Click Here 👆 ](https://ai-engineering-mastery-101.netlify.app/)
 > 
 <br/>
 
