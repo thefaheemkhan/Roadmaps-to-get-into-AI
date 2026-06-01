@@ -6,6 +6,8 @@
 > **From Zero to Production-Grade AI Engineer.** [Click Here](https://ai-engineering-mastery-101.netlify.app/) 👆
 >
 > **LLM Mastery 101 Roadmap .** [Click Here](https://llm-mastery.netlify.app/) 👆
+>
+> **AI Engineering Mastery Roadmap** [Click Here](https://ai-engineerin-mastery.netlify.app/) 👆
 <br/>
 
 
